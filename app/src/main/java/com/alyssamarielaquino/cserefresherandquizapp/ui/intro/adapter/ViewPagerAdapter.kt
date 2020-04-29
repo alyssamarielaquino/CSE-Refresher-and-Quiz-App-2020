@@ -1,10 +1,8 @@
-package com.alyssamarielaquino.cserefresherandquizapp.ui.main.adapter
+package com.alyssamarielaquino.cserefresherandquizapp.ui.intro.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.alyssamarielaquino.cserefresherandquizapp.R
 import kotlinx.android.synthetic.main.layout_onboarding_screen.view.*
@@ -13,7 +11,10 @@ import kotlinx.android.synthetic.main.layout_onboarding_screen.view.*
 class ViewPagerAdapter : RecyclerView.Adapter<PagerVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerVH =
-        PagerVH(LayoutInflater.from(parent.context).inflate(R.layout.layout_onboarding_screen, parent, false))
+        PagerVH(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.layout_onboarding_screen, parent, false)
+        )
 
 
 

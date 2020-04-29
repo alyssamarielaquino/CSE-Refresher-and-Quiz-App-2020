@@ -1,16 +1,16 @@
-package com.alyssamarielaquino.cserefresherandquizapp.ui.main.view
+package com.alyssamarielaquino.cserefresherandquizapp.ui.intro.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.alyssamarielaquino.cserefresherandquizapp.R
-import com.alyssamarielaquino.cserefresherandquizapp.ui.main.adapter.ViewPagerAdapter
+import com.alyssamarielaquino.cserefresherandquizapp.ui.intro.adapter.ViewPagerAdapter
+import com.alyssamarielaquino.cserefresherandquizapp.ui.auth.view.LoginActivity
+import com.alyssamarielaquino.cserefresherandquizapp.ui.auth.view.RegisterActivity
 import kotlinx.android.synthetic.main.activity_starting_screen.*
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 
 
 class StartingScreenActivity : AppCompatActivity() {
@@ -20,7 +20,8 @@ class StartingScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_starting_screen)
 
 
-        view_pager2.adapter = ViewPagerAdapter()
+        view_pager2.adapter =
+            ViewPagerAdapter()
 
         view_pager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
 
