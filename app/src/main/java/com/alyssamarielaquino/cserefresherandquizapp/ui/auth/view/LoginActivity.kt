@@ -1,15 +1,16 @@
 package com.alyssamarielaquino.cserefresherandquizapp.ui.auth.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.alyssamarielaquino.cserefresherandquizapp.R
 import com.alyssamarielaquino.cserefresherandquizapp.databinding.ActivityLoginBinding
 import com.alyssamarielaquino.cserefresherandquizapp.ui.auth.adapter.AuthListener
 import com.alyssamarielaquino.cserefresherandquizapp.ui.auth.viewmodel.AuthViewModel
+import com.alyssamarielaquino.cserefresherandquizapp.ui.home.view.HomeActivity
 import com.alyssamarielaquino.cserefresherandquizapp.util.toast
 
 class LoginActivity : AppCompatActivity(), AuthListener {
@@ -32,9 +33,9 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     }
 
     override fun onSuccess(loginResponse: LiveData<String>) {
-        loginResponse.observe(this, Observer {
-            toast(it)
-        })
+        Intent(applicationContext, HomeActivity::class.java).also{
+            startActivity(it)
+        }
     }
 
     override fun onFailure(message: String) {
