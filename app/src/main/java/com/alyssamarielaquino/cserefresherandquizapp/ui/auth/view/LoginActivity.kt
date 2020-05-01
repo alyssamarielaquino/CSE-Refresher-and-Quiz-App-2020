@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.alyssamarielaquino.cserefresherandquizapp.R
+import com.alyssamarielaquino.cserefresherandquizapp.data.model.User
 import com.alyssamarielaquino.cserefresherandquizapp.databinding.ActivityLoginBinding
 import com.alyssamarielaquino.cserefresherandquizapp.ui.auth.adapter.AuthListener
 import com.alyssamarielaquino.cserefresherandquizapp.ui.auth.viewmodel.AuthViewModel
@@ -32,7 +33,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         toast("Login Started")
     }
 
-    override fun onSuccess(loginResponse: LiveData<String>) {
+    override fun onSuccess(user: User) {
         Intent(applicationContext, HomeActivity::class.java).also{
             startActivity(it)
         }

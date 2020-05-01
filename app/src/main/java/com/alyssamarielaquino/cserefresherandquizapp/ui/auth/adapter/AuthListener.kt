@@ -1,11 +1,11 @@
 package com.alyssamarielaquino.cserefresherandquizapp.ui.auth.adapter
 
-import androidx.lifecycle.LiveData
+import com.alyssamarielaquino.cserefresherandquizapp.data.model.User
 
 interface AuthListener {
 
     fun onStarted()
-    fun onSuccess(loginResponse: LiveData<String>)
+    fun onSuccess(user : User)
     fun onFailure(message: String)
 
 

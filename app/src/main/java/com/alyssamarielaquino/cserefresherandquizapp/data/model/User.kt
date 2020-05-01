@@ -1,6 +1,7 @@
 package com.alyssamarielaquino.cserefresherandquizapp.data.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 const val CURRENT_USER_ID = 0
 
@@ -14,5 +15,6 @@ data class User (
     val created_at : String? = null,
     val updated_at : String? = null
 ){
-    
+    @PrimaryKey(autoGenerate = false)
+    var uid : Int = CURRENT_USER_ID
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.alyssamarielaquino.cserefresherandquizapp.R
+import com.alyssamarielaquino.cserefresherandquizapp.data.model.User
 import com.alyssamarielaquino.cserefresherandquizapp.databinding.ActivityRegisterBinding
 import com.alyssamarielaquino.cserefresherandquizapp.ui.auth.adapter.AuthListener
 import com.alyssamarielaquino.cserefresherandquizapp.ui.auth.viewmodel.AuthViewModel
@@ -31,10 +32,8 @@ class RegisterActivity : AppCompatActivity(), AuthListener {
         toast("Login Started")
     }
 
-    override fun onSuccess(loginResponse: LiveData<String>) {
-        loginResponse.observe(this, Observer {
-            toast(it)
-        })
+    override fun onSuccess(user: User) {
+        toast("${user.name} is logged in.")
     }
 
     override fun onFailure(message: String) {

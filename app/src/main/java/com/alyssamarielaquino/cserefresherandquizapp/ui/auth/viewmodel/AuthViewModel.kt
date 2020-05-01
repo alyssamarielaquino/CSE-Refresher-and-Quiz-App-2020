@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import com.alyssamarielaquino.cserefresherandquizapp.data.repository.UserRepository
 import com.alyssamarielaquino.cserefresherandquizapp.ui.auth.adapter.AuthListener
+import com.alyssamarielaquino.cserefresherandquizapp.util.Coroutines
 
 class AuthViewModel : ViewModel() {
 
@@ -21,24 +22,36 @@ class AuthViewModel : ViewModel() {
             return
         }
 
-        val loginResponse = UserRepository().userLogin(email!!, password!!)
-        authListener?.onSuccess(loginResponse)
+        Coroutines.main {
+            val response = UserRepository().userLogin(email!!, password!!)
+            if (response.isSuccessful){
+                authListener?.onSuccess(response.body()?.user!!)
+            }
+        }
+
+
+
 
 
     }
 
     fun onRegisterButtonClick(view : View){
 
+        authListener?.onStarted()
+
         if (email.isNullOrEmpty() || password.isNullOrEmpty()){
-            authListener?.onStarted()
+            authListener?.onFailure("Invalid email or password")
+            return
+        }
 
-            if (email.isNullOrEmpty() || password.isNullOrEmpty()){
-                authListener?.onFailure("Invalid email or password")
-                return
+        Coroutines.main {
+            val response = UserRepository().userLogin(email!!, password!!)
+            if (response.isSuccessful){
+                authListener?.onSuccess(response.body()?.user!!)
             }
-
-            val loginResponse = UserRepository().userLogin(email!!, password!!)
-            authListener?.onSuccess(loginResponse)
+            else{
+                authListener?.onFailure("Error code: ${response.code()}")
+            }
         }
 
 
